@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3f8b4b93e07fb46b523595ec74a4ae, type: 3}
+  m_Name: Table_Item
+  m_EditorClassIdentifier: 
+  m_Entries:
+  - id: Item_Shoes
+    icon: {fileID: 21300000, guid: 4d4a0b809cb986946943fe1434298c1f, type: 3}
+    kind: 0
+    nameKor: 
+    nameEng: Shoes
+    nameJap: 
+    descKor: 
+    descEng: 
+    descJap: 
+    special:
+    - '{"DoubleJump": true}'
+    itemModel: {fileID: 0}
+    popupDistance: 5
+    equipPrefabs:
+    - {fileID: 7390267860584085394, guid: 19a4585370709f949a5a0863d99ce3c7, type: 3}
+    - {fileID: 6828070838245707426, guid: d95fbf96bc9d4144c9a232b70d3c63f5, type: 3}
+  - id: Item_Wing
+    icon: {fileID: 21300000, guid: 36e25852bfd3c86488d5a5a751147444, type: 3}
+    kind: 3
+    nameKor: 
+    nameEng: Wing
+    nameJap: 
+    descKor: 
+    descEng: 
+    descJap: 
+    special:
+    - '{"Fly": true}'
+    itemModel: {fileID: 0}
+    popupDistance: 5
+    equipPrefabs:
+    - {fileID: 1896449289819898070, guid: b46e6ee7bfb32184aaeef1b2976160a1, type: 3}
+  - id: Item_Sword
+    icon: {fileID: 21300000, guid: 17ddd0fc6f0138847b399fa2f43d32fb, type: 3}
+    kind: 1
+    nameKor: 
+    nameEng: Sword
+    nameJap: 
+    descKor: 
+    descEng: Nice Sword
+    descJap: 
+    special:
+    - '{"Attack": true}'
+    itemModel: {fileID: 3873977272105135635, guid: e297bdbf2e7109c48b1fb06f0a8bcba6, type: 3}
+    popupDistance: 9
+    equipPrefabs:
+    - {fileID: 5897707812294462412, guid: 93acfb7a711300443b11a68b6ce6ca2a, type: 3}
+  - id: Item_Branch
+    icon: {fileID: 21300000, guid: 716a3d3033442c94d8776fca90f6e358, type: 3}
+    kind: 4
+    nameKor: 
+    nameEng: Branch
+    nameJap: 
+    descKor: 
+    descEng: There is fruit at the end. It seems like it could be used as material
+      for some important item.
+    descJap: 
+    special: []
+    itemModel: {fileID: 8497723418142551518, guid: 63c6701bda46a824b9734cefd8b03f2c, type: 3}
+    popupDistance: 5
+    equipPrefabs: []
+  - id: Item_Lens01
+    icon: {fileID: 21300000, guid: 8c0c7a6e9e7c0c24b84cb1240fc2514b, type: 3}
+    kind: 4
+    nameKor: 
+    nameEng: Lens 01
+    nameJap: 
+    descKor: 
+    descEng: It is a transparent lens. It seems like it will be an important part
+      of an object.
+    descJap: 
+    special: []
+    itemModel: {fileID: 1728845418181653797, guid: 018201057947d8f42881952774bcced3, type: 3}
+    popupDistance: 5
+    equipPrefabs: []
+  - id: Item_Lens02
+    icon: {fileID: 21300000, guid: 6c561b2b1a987604ab2926ff807376bf, type: 3}
+    kind: 4
+    nameKor: 
+    nameEng: Lens 02
+    nameJap: 
+    descKor: 
+    descEng: It is a transparent lens. It seems like it will be an important part
+      of an object.
+    descJap: 
+    special: []
+    itemModel: {fileID: 8861840065342176664, guid: 4467a2e90cc980c4fbfd6dabd447bcf3, type: 3}
+    popupDistance: 5
+    equipPrefabs: []
+  - id: Item_ThickWire01
+    icon: {fileID: 21300000, guid: f9012002f96992e4991153502fe073ee, type: 3}
+    kind: 4
+    nameKor: 
+    nameEng: Thick Wire 01
+    nameJap: 
+    descKor: 
+    descEng: It is thick wire. It can be used as an important material for molds
+      when making things.
+    descJap: 
+    special: []
+    itemModel: {fileID: 9046144869907565710, guid: f3c35fd3e88840f4594cc41aa2d2be29, type: 3}
+    popupDistance: 9
+    equipPrefabs: []
+  - id: Item_ThickWire02
+    icon: {fileID: 21300000, guid: ae057f57ed0df624d9b2bcbde3763d12, type: 3}
+    kind: 4
+    nameKor: 
+    nameEng: Thick Wire 02
+    nameJap: 
+    descKor: 
+    descEng: It is thick wire. It can be used as an important material for molds
+      when making things.
+    descJap: 
+    special: []
+    itemModel: {fileID: 5288612856550632234, guid: aa0b17d060f9cb243a15efdd4d05aa8b, type: 3}
+    popupDistance: 9
+    equipPrefabs: []

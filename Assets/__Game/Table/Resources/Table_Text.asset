@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262acde65f6bac74fb3135400ae92a33, type: 3}
+  m_Name: Table_Text
+  m_EditorClassIdentifier:
+  m_Entries:
+  - id: Text_Save_Name
+    kor: "저장"
+    eng: "Save"
+    jap: "セーブ"
+    rich: ""
+  - id: Text_Common_Language
+    kor: "한국어"
+    eng: "English"
+    jap: "日本語"
+    rich: ""
+  - id: Text_Common_Ok
+    kor: "확인"
+    eng: "OK"
+    jap: "OK"
+    rich: ""
+  - id: Text_Common_Yes
+    kor: "예"
+    eng: "Yes"
+    jap: "はい"
+    rich: ""
+  - id: Text_Common_No
+    kor: "아니오"
+    eng: "No"
+    jap: "いいえ"
+    rich: ""
+  - id: Text_Common_Delete
+    kor: "삭제"
+    eng: "Delete"
+    jap: "削除"
+    rich: ""
+  - id: Text_Puzzle_Title
+    kor: "퍼즐"
+    eng: "Puzzle"
+    jap: "パズル"
+    rich: ""
+  - id: Text_Notify_Title
+    kor: "알림"
+    eng: "Notification"
+    jap: "お知らせ"
+    rich: ""
+  - id: Text_Notify_GetItem
+    kor: "{0}을 획득하였습니다."
+    eng: "Obtained {0}."
+    jap: "{0}を獲得しました。"
+    rich: ""
+  - id: Text_Notify_Save
+    kor: "게임이 저장되었습니다."
+    eng: "Game has been saved."
+    jap: "ゲームがセーブされました。"
+    rich: ""
+  - id: Text_Notify_KeyNotHas
+    kor: "열쇠가 필요합니다."
+    eng: "A key is required."
+    jap: "鍵が必要です。"
+    rich: ""
+  - id: Text_Notify_Clear
+    kor: "게임을 클리어했습니다.\r\r\r\n축하드립니다!!"
+    eng: "Congratulations!\r\r\r\nYou cleared the game!!"
+    jap: "ゲームをクリアしました。\r\r\r\nおめでとうございます!!"
+    rich: ""
+  - id: Text_Notify_SlotDelete
+    kor: "이 슬롯의 저장 데이터를 삭제하시겠습니까?"
+    eng: "Delete save data for this slot?"
+    jap: "このスロットのセーブデータを削除しますか？"
+    rich: ""
+  - id: Text_Shutdown_Text
+    kor: "에러 발생으로 잠시 후 로비로 이동합니다."
+    eng: "An error occurred. Returning to lobby shortly."
+    jap: "エラーが発生したため、まもなくロビーに移動します。"
+    rich: ""
+  - id: Text_Quit_Title
+    kor: "게임종료"
+    eng: "Quit Game"
+    jap: "ゲーム終了"
+    rich: ""
+  - id: Text_Setting_Title
+    kor: "설정"
+    eng: "Settings"
+    jap: "設定"
+    rich: ""
+  - id: Text_Setting_UseInteractUI
+    kor: "상호작용시 UI에 표시"
+    eng: "Show UI on interact"
+    jap: "インタラクト時にUIを表示"
+    rich: ""
+  - id: Text_Setting_UseActionUI
+    kor: "조작키 표시"
+    eng: "Show controls"
+    jap: "操作キーを表示"
+    rich: ""
+  - id: Text_Setting_BGM
+    kor: "배경음악"
+    eng: "BGM"
+    jap: "BGM"
+    rich: ""
+  - id: Text_Setting_SE
+    kor: "효과음"
+    eng: "SFX"
+    jap: "効果音"
+    rich: ""
+  - id: Text_Quest_Title
+    kor: "목표"
+    eng: "Objective"
+    jap: "目標"
+    rich: ""
+  - id: Text_Quest_Target_Puzzle
+    kor: "퍼즐 풀기: {0}"
+    eng: "Solve puzzle: {0}"
+    jap: "パズルを解く：{0}"
+    rich: ""
+  - id: Text_Quest_Target_Item
+    kor: "유물 획득: {0}"
+    eng: "Obtain relic: {0}"
+    jap: "遺物を獲得：{0}"
+    rich: ""
+  - id: Text_Quest_Done
+    kor: "완료"
+    eng: "Complete"
+    jap: "完了"
+    rich: ""
+  - id: Text_Lobby_Start
+    kor: "시작"
+    eng: "Start"
+    jap: "スタート"
+    rich: ""
+  - id: Text_Load_Back
+    kor: "뒤로"
+    eng: "Back"
+    jap: "戻る"
+    rich: ""
+  - id: Text_Load_Slot
+    kor: "슬롯 {0}"
+    eng: "Slot {0}"
+    jap: "スロット{0}"
+    rich: ""
+  - id: Text_Load_Saved
+    kor: "저장됨"
+    eng: "Saved"
+    jap: "セーブ済み"
+    rich: ""
+  - id: Text_Load_Empty
+    kor: "비어있음"
+    eng: "Empty"
+    jap: "空き"
+    rich: ""
