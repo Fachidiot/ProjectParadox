@@ -19,7 +19,7 @@ public class CharacterPhysics3D : CharacterPhysicsBase
     [SerializeField, TabGroup("Option"), LabelText("중력 배율")] private float m_GravityScale = 2f;
     #endregion
     #region Property
-    public EFlyState FlyState => 0 < m_GroundCol.Count ? EFlyState.None : m_FlyState;
+    public virtual EFlyState FlyState => 0 < m_GroundCol.Count ? EFlyState.None : m_FlyState;
     public Rigidbody Rig => m_Rig;
     public FloatValue MoveSpeed { get; set; }
     public FloatValue JumpPower { get; private set; }
@@ -117,7 +117,7 @@ public class CharacterPhysics3D : CharacterPhysicsBase
     }
     #endregion
     #region Function
-    public void Move(Vector2 _vec, bool _isNow = false)
+    public virtual void Move(Vector2 _vec, bool _isNow = false)
     {
         m_IsMovedThisFrame = true;
         m_MoveVel = MoveSpeed.v * _vec;
@@ -126,19 +126,19 @@ public class CharacterPhysics3D : CharacterPhysicsBase
         if (_isNow)
             m_Rig.linearVelocity = new Vector3(_vec.x, m_Rig.linearVelocity.y, _vec.y);
     }
-    public void Jump(float _power = 1.0f)
+    public virtual void Jump(float _power = 1.0f)
     {
         m_Rig.linearVelocity = new Vector3(m_Rig.linearVelocity.x, JumpPower.v * _power, m_Rig.linearVelocity.z);
         m_FlyState = EFlyState.Jump;
         ClearGroundCol();
     }
-    public void StartFly()
+    public virtual void StartFly()
     {
         m_FlyState = EFlyState.Fly;
         ClearGroundCol();
         m_Rig.linearVelocity = new Vector3(m_Rig.linearVelocity.x, 0, m_Rig.linearVelocity.z);
     }
-    public void StopFly()
+    public virtual void StopFly()
     {
         m_FlyState = EFlyState.Float;
     }

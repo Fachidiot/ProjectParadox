@@ -109,7 +109,7 @@ public class LocalCameraControlManager : LocalManagerBase
 
     private bool OnInputMouseButton(InputAction.CallbackContext _context)
     {
-        if (_context.started)
+        if (_context.performed)
             m_IsMouseButtonDown = true;
         else if (_context.canceled)
         {

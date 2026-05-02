@@ -17,9 +17,10 @@ public class PlayerActor : MonoBehaviour
     [SerializeField, TabGroup("Component"), LabelText("신발 (왼쪽)")] private Transform m_SlotShoesLeft;
     [SerializeField, TabGroup("Component"), LabelText("신발 (오른쪽)")] private Transform m_SlotShoesRight;
 
-    [Title("이동")]
-    [SerializeField, TabGroup("Option"), LabelText("이동 입력 이름")] private string m_MoveActionName = "Move";
-    [SerializeField, TabGroup("Option"), LabelText("점프 입력 이름")] private string m_JumpActionName = "Jump";
+    [Title("입력")]
+    [SerializeField, TabGroup("Component"), LabelText("입력 핸들러")] protected PlayerInputHandler m_InputHandler;
+
+    [Title("옵션")]
     [SerializeField, TabGroup("Option"), LabelText("회전 속도")] private float m_RotSpeed = 10.0f;
 
     [Title("추락 복귀")]
@@ -27,11 +28,7 @@ public class PlayerActor : MonoBehaviour
     [SerializeField, TabGroup("Option"), LabelText("추락 판정 Y")] private float m_FallThresholdY = -5f;
 
     [Title("공격")]
-    [SerializeField, TabGroup("Option"), LabelText("공격 입력 이름")] private string m_AttackActionName = "Attack";
     [SerializeField, TabGroup("Component"), LabelText("공격 트리거")] private AttackTrigger m_AttackTrigger;
-
-    [Title("감정")]
-    [SerializeField, TabGroup("Option"), LabelText("감정 입력 이름")] private string m_EmotionActionName = "Emotion";
     #endregion
     #region Get,Set
     /// <summary>물리 컴포넌트</summary>
@@ -41,15 +38,15 @@ public class PlayerActor : MonoBehaviour
     /// <summary>애니메이터</summary>
     public Animator Animator => m_Animator;
     /// <summary>현재 이동 입력</summary>
-    public Vector2 MoveInput { get; private set; }
+    public Vector2 MoveInput => m_InputHandler != null ? m_InputHandler.MoveInput : Vector2.zero;
     /// <summary>점프 버튼 눌림 (프레임 단위)</summary>
-    public bool IsJumpPressed { get; private set; }
+    public bool IsJumpPressed => m_InputHandler != null && m_InputHandler.IsJumpPressed;
     /// <summary>점프 버튼 홀드 중</summary>
-    public bool IsJumpHeld { get; private set; }
+    public bool IsJumpHeld => m_InputHandler != null && m_InputHandler.IsJumpHeld;
     /// <summary>공격 버튼 눌림 (프레임 단위)</summary>
-    public bool IsAttackPressed { get; private set; }
+    public bool IsAttackPressed => m_InputHandler != null && m_InputHandler.ActionTriggered;
     /// <summary>감정 버튼 눌림 (프레임 단위)</summary>
-    public bool IsEmotionPressed { get; private set; }
+    public bool IsEmotionPressed => m_InputHandler != null && m_InputHandler.IsEmotionPressed;
     /// <summary>공격 트리거</summary>
     public AttackTrigger AttackTrigger => m_AttackTrigger;
     /// <summary>마지막 안전 위치 (지면 위 있을 때 갱신)</summary>
@@ -63,15 +60,12 @@ public class PlayerActor : MonoBehaviour
     #region Event
     public void Init()
     {
+        if (m_InputHandler == null)
+            m_InputHandler = GetComponent<PlayerInputHandler>();
+
         LastSafePos = transform.position;
         m_Physics.Init();
         m_FSM.Init(this);
-
-        var input = LocalInputManager.instance;
-        input.Create(LocalPlayerActorManager.instance, m_MoveActionName, LocalInputManager.EPriority.Game, OnInputMove);
-        input.Create(LocalPlayerActorManager.instance, m_JumpActionName, LocalInputManager.EPriority.Game, OnInputJump);
-        input.Create(LocalPlayerActorManager.instance, m_AttackActionName, LocalInputManager.EPriority.Game, OnInputAttack);
-        input.Create(LocalPlayerActorManager.instance, m_EmotionActionName, LocalInputManager.EPriority.Game, OnInputEmotion);
     }
 
     private void Update()
@@ -83,50 +77,13 @@ public class PlayerActor : MonoBehaviour
             m_FSM.Set(m_FSM.GetState(m_FallRecoveryStateID));
     }
 
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
-        IsJumpPressed = false;
-        IsAttackPressed = false;
-        IsEmotionPressed = false;
+        // 입력 플래그 리셋은 PlayerInputHandler에서 관리되므로 생략
     }
     #endregion
 
-    #region Input Callback
-    private bool OnInputMove(InputAction.CallbackContext _context)
-    {
-        if (_context.performed)
-            MoveInput = _context.ReadValue<Vector2>();
-        else if (_context.canceled)
-            MoveInput = Vector2.zero;
-        return false;
-    }
-
-    private bool OnInputJump(InputAction.CallbackContext _context)
-    {
-        if (_context.performed)
-        {
-            IsJumpPressed = true;
-            IsJumpHeld = true;
-        }
-        else if (_context.canceled)
-            IsJumpHeld = false;
-        return false;
-    }
-
-    private bool OnInputAttack(InputAction.CallbackContext _context)
-    {
-        if (_context.performed)
-            IsAttackPressed = true;
-        return false;
-    }
-
-    private bool OnInputEmotion(InputAction.CallbackContext _context)
-    {
-        if (_context.performed)
-            IsEmotionPressed = true;
-        return false;
-    }
-    #endregion
+    // 삭제됨: LocalInputManager 콜백 메서드 (OnInputMove, OnInputJump 등은 PlayerInputHandler로 이관)
 
     #region Function
     /// <summary>장비 슬롯 Transform 반환 (Shoes 제외)</summary>
@@ -139,7 +96,7 @@ public class PlayerActor : MonoBehaviour
     };
 
     /// <summary>카메라 방향 기반 이동 벡터 계산</summary>
-    public Vector2 GetCameraMoveDir()
+    public virtual Vector2 GetCameraMoveDir()
     {
         Transform camRot = LocalCameraManager.instance.RotRoot;
         Vector3 forward = camRot.forward;
@@ -154,7 +111,7 @@ public class PlayerActor : MonoBehaviour
     }
 
     /// <summary>이동 방향으로 캐릭터 회전</summary>
-    public void RotateTowardMoveDir(Vector2 moveDir)
+    public virtual void RotateTowardMoveDir(Vector2 moveDir)
     {
         if (moveDir == Vector2.zero) return;
 
